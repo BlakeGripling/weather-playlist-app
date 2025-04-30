@@ -1,0 +1,182 @@
+/* Base */
+html, body {
+  height: 100%;
+  margin: 0; padding: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  opacity: 0;
+  animation: fadeInBody 1s ease forwards;
+}
+
+/* Backgrounds */
+body.clear-day {
+  background: url('images/background.png') no-repeat center/cover;
+}
+body.clear-night {
+  background: url('images/weather-app-night.png') no-repeat center/cover;
+}
+body.cloudy-bg {
+  background: url('images/weather-app-clouds.png') no-repeat center/cover;
+}
+body.rainy-bg {
+  background: url('images/weather-app-rain.png') no-repeat center/cover;
+}
+body.stormy-bg {
+  background: url('images/weather-app-thunderstorm.png') no-repeat center/cover;
+}
+body.snowy-bg {
+  background: url('images/weather-app-snow.png') no-repeat center/cover;
+}
+/* Mist/Haze/Fog */
+body.mist-bg, body.haze-bg, body.fog-bg {
+  background: url('images/weather-app-haze.png') no-repeat center/cover;
+}
+
+/* Wrapper */
+.wrapper {
+  text-align: center;
+  padding: 40px 20px 200px;
+}
+
+/* Search Bar */
+.search-bar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.search-bar input {
+  padding: 10px; width: 250px;
+  border: none; border-radius: 8px;
+  margin-right: 10px; font-size: 16px;
+}
+.search-bar button {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #00ffe0, #0078ff);
+  border: none; border-radius: 8px;
+  font-size: 16px; color: #fff;
+  cursor: pointer; font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.7),0 0 30px rgba(0,255,255,0.5);
+  transition: 0.4s ease;
+}
+.search-bar button:hover {
+  background: linear-gradient(135deg, #0078ff, #00ffe0);
+  box-shadow: 0 0 30px rgba(0,255,255,1),0 0 40px rgba(0,255,255,0.8);
+  transform: scale(1.05);
+}
+
+/* Animated Clouds */
+.animated-clouds {
+  position: fixed; top:0; left:0;
+  width:100%; height:100%; pointer-events:none;
+  overflow:hidden; z-index:1;
+}
+.cloud {
+  position:absolute; background: rgba(255,255,255,0.8);
+  border-radius:50%; opacity:0.7;
+}
+.cloud1 { top:10%; left:-20%; width:200px; height:100px; animation:drift 60s linear infinite; }
+.cloud2 { top:20%; left:-25%; width:150px; height:80px; animation:drift 80s linear infinite; }
+.cloud3 { top:40%; left:-30%; width:180px; height:90px; animation:drift 70s linear infinite; }
+.cloud4 { top:60%; left:-15%; width:220px; height:110px; animation:drift 90s linear infinite; }
+.cloud5 { top:75%; left:-20%; width:160px; height:85px; animation:drift 75s linear infinite; }
+.cloud6 { top:85%; left:-30%; width:190px; height:95px; animation:drift 65s linear infinite; }
+@keyframes drift { 0% {transform:translateX(0);} 100% {transform:translateX(200vw);} }
+
+/* Weather Cards */
+.weather-scroll {
+  display:flex; flex-wrap:nowrap;
+  overflow-x:auto; gap:20px;
+  padding:30px; margin:0 auto;
+  max-width:1000px; justify-content:center;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  position:relative; z-index:10;
+}
+.weather-card {
+  flex:0 0 auto; width:300px; min-height:420px;
+  background:rgba(255,255,255,0.25); border-radius:20px;
+  padding:20px; backdrop-filter:blur(10px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  scroll-snap-align:center; position:relative; z-index:10;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-6px) }
+}
+.weather-icon {
+  width: 80px;
+  height: 80px;
+  /* boost contrast, add glow */
+  filter: brightness(1.2) contrast(1.1) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.weather-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.5));
+}
+
+.weather-card h2 { color:#222; }
+.weather-card p { color:#444; }
+.weather-card img { width:80px; height:80px; }
+.weather-card .temp { font-size:48px; color:white; margin:10px 0; }
+
+/* Hide Scrollbar */
+.weather-scroll::-webkit-scrollbar { display:none; }
+
+/* Spotify Embed */
+.spotify-embed {
+  position:fixed; bottom:30px; left:50%;
+  transform:translateX(-50%); z-index:99;
+  padding:10px; backdrop-filter:blur(8px);
+  border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.4);
+  animation:spotifySlideUp 0.8s ease forwards;
+}
+
+/* Delete Button */
+.delete-btn {
+  position:absolute; top:10px; right:10px;
+  background:transparent; border:none;
+  font-size:20px; color:white; cursor:pointer;
+  transition:transform .3s ease; z-index:20;
+}
+.delete-btn:hover { transform:scale(1.3); color:#ff6b6b; }
+
+.lottie-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+/* basic pure‐CSS tooltips */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 50;
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+
+/* Animations */
+@keyframes fadeInBody { to { opacity:1; } }
+@keyframes spotifySlideUp { to { opacity:1; transform:translate(-50%,0); } }
