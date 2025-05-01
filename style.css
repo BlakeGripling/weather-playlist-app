@@ -180,3 +180,164 @@ body.mist-bg, body.haze-bg, body.fog-bg {
 /* Animations */
 @keyframes fadeInBody { to { opacity:1; } }
 @keyframes spotifySlideUp { to { opacity:1; transform:translate(-50%,0); } }
+
+/* ─── MOBILE RESPONSIVE (up to 600px) ─────────────────────────── */
+@media (max-width: 600px) {
+
+  /* Hide heavy clouds animation for perf */
+  .animated-clouds {
+    display: none;
+  }
+
+  /* Shrink overall padding */
+  .wrapper {
+    padding: 20px 10px 100px;
+  }
+
+   /* remove or comment out your old .search-bar and .neon-button rules */
+
+/* NEW: fancy rounded search box */
+.searchBox {
+  display: flex;
+  max-width: 280px;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 4px 12px;
+  position: relative;
+  }
+  
+  .searchInput {
+    flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px 48px 12px 16px;
+  }
+  .searchInput::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+  
+  
+  .searchButton {
+    position: absolute;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD54F 0%, #FFB300 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .searchButton svg {
+    fill: #fff;
+    stroke: #fff;
+  }
+  
+  
+  .searchButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25)
+  }
+  
+  .searchButton:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  
+
+  /* Turn horizontal cards into a vertical list */
+  .weather-scroll {
+    flex-direction: column;
+    overflow-x: hidden;
+    max-width: none;
+    padding: 10px;
+    gap: 15px;
+  }
+  .weather-card {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+  }
+
+  /* Scale down icons/Lottie slightly */
+  .lottie-icon,
+  .weather-card img.weather-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Smaller font sizes */
+  .weather-card .temp {
+    font-size: 36px;
+  }
+  .weather-card h2 {
+    font-size: 1.2rem;
+  }
+  .weather-card p {
+    font-size: 0.9rem;
+  }
+}
+/* From Uiverse.io by OnlyCodeChannel */
+.searchBox {
+  display: flex;
+  max-width: 230px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: #2f3640;
+  border-radius: 50px;
+  position: relative;
+  margin: 0 auto;           /* center it */
+}
+
+/* the input */
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  padding: 24px 46px 24px 26px;
+  width: 100%;
+}
+
+/* the round button */
+.searchButton {
+  color: white;
+  position: absolute;
+  right: 8px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  cursor: pointer;
+}
+
+/* hover effect */
+.searchButton:hover {
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+  transform: translateY(-3px);
+}
+
+/* pressing effect */
+.searchButton:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
