@@ -203,9 +203,9 @@ body.mist-bg, body.haze-bg, body.fog-bg {
   align-items: center;
   gap: 8px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(30, 30, 30, 0.45);  
+  border: 1px solid rgba(255, 175, 50, 0.4);
   border-radius: 50px;
   padding: 4px 12px;
   position: relative;
